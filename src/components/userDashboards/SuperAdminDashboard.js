@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../Navbar";
 import ClassroomListComponent from "../classroom/ClassroomListComponent";
 
 import { createUseStyles, useTheme } from "react-jss";
@@ -24,6 +25,7 @@ const SuperAdminDashboard = () => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.dashboardwrapper}>
+				<Navbar title={"Classrooms"} />
 				<ClassroomListComponent />
 			</div>
 		</div>

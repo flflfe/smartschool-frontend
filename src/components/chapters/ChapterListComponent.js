@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { createUseStyles, useTheme } from "react-jss";
 import Axios from "axios";
 import ChapterCard from "./ChapterCard";
+import Navbar from "../Navbar";
 
 import LoadingComponent from "../LoadingComponent";
 
@@ -92,14 +93,17 @@ const ChapterListComponent = ({ match }) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.chapterlist}>
+				<Navbar title={"Chapters"} subjectID={subjectID} />
 				{isLoading ? (
 					<LoadingComponent />
 				) : (
 					<div className={classes.listMain}>
-						{chapterList.map((chapter) => (
+						{chapterList?.map((chapter) => (
 							<div className={classes.classroomCardList}>
+								{console.log(chapter)}
 								<ChapterCard
 									name={chapter.name}
+									teachers={chapter.teachers}
 									onClickHandler={(e) => {
 										console.log(chapter._id);
 										onClickHandler(chapter._id);

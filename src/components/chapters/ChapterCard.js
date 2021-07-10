@@ -45,7 +45,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const ChapterCard = ({ name, onClickHandler }) => {
+const ChapterCard = ({ name, onClickHandler, teachers }) => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
 	return (
@@ -53,7 +53,11 @@ const ChapterCard = ({ name, onClickHandler }) => {
 			<div className={classes.classroomcard} onClick={onClickHandler}>
 				<div className={classes.classroomcarddetails}>
 					<h1 className={classes.classroomName}>{name}</h1>
-					<h1 className={classes.classroomDesc}>Desc</h1>
+					<h1 className={classes.classroomDesc}>
+						{teachers?.map((teacher) => (
+							<div>{teacher.name}</div>
+						))}
+					</h1>
 				</div>
 			</div>
 		</div>

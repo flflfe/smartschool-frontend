@@ -77,10 +77,10 @@ const VideoPlayer = ({
 	const [showControl, setShowControl] = useState(false);
 	const playerRef = useRef(null);
 	const [playing, setPlaying] = useState(true);
-	const [volume, setVolume] = useState(0.8);
-	const [muted, setMuted] = useState(false);
+	// const [volume, setVolume] = useState(0.8);
+	// const [muted, setMuted] = useState(false);
 	const [played, setPlayed] = useState(0);
-	const [duration, setDuration] = useState(0);
+	// const [duration, setDuration] = useState(0);
 
 	useEffect(() => {
 		const transcriptionSeekinSeconds = transcriptionSeek / 1000;
@@ -140,8 +140,8 @@ const VideoPlayer = ({
 				controls={false}
 				url={recordingUrl}
 				playing={playing}
-				volume={volume}
-				muted={muted}
+				volume={0.8}
+				muted={false}
 				played={played}
 				onReady={() => setIsLoading(false)}
 				onBufferEnd={() => setBufferDone(true)}

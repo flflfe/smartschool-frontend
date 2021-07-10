@@ -14,6 +14,8 @@ import ChapterListComponent from "../components/chapters/ChapterListComponent";
 import ChapterDashboard from "../components/chapters/ChapterDashboard";
 import RecordingDashboard from "../components/chapters/RecordingDashboard";
 
+import RegisterComponent from "../components/forms/RegisterComponent";
+
 function PrivateRoutes() {
 	const { role } = useContext(UserContext);
 
@@ -50,6 +52,7 @@ function PrivateRoutes() {
 				path={SLUGS.chapterdashboard}
 				component={ChapterDashboard}
 			/>
+			<Route exact path={SLUGS.register} component={RegisterComponent} />
 			<Route
 				exact
 				path={SLUGS.recordingdashboard}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import Axios from "axios";
+import Navbar from "../Navbar";
+
 import MovieIcon from "@material-ui/icons/Movie";
 
 import { useHistory } from "react-router";
@@ -123,6 +125,7 @@ const ChapterDashboard = ({ match }) => {
 
 	return (
 		<div className={classes.container}>
+			<Navbar title="Recordings" chapterId={chapterId} />
 			<div className={classes.mainbox}>
 				{recordings?.map((recording) => (
 					<div

@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../Navbar";
 import SubjectCardListComponent from "../subject/SubjectCardListComponent";
 
 import { createUseStyles, useTheme } from "react-jss";
@@ -32,6 +33,7 @@ const ClassRoomDashboard = ({ match }) => {
 
 	return (
 		<div className={classes.container}>
+			<Navbar title={"Subjects"} classroomID={classroomID}></Navbar>
 			<SubjectCardListComponent classroomID={classroomID} />
 		</div>
 	);

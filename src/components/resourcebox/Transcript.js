@@ -59,7 +59,13 @@ const useStyles = createUseStyles((theme) => ({
 	},
 }));
 
-const Transcript = ({ recordingData, setTranscriptionSeek, bufferDone }) => {
+const Transcript = ({
+	recordingData,
+	setTranscriptionSeek,
+	bufferDone,
+	isRequested,
+	isComplete,
+}) => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
 	const recordingid = recordingData._id;

@@ -62,6 +62,7 @@ const RecordingDashboard = ({ match }) => {
 	const [recordingData, setRecordingData] = useState([]);
 
 	const [bufferdone, setBufferDone] = useState(false);
+	const [refreshBtn, setRefreshBtn] = useState(true);
 
 	const [transcriptionSeek, setTranscriptionSeek] = useState(0);
 
@@ -116,7 +117,7 @@ const RecordingDashboard = ({ match }) => {
 	useEffect(() => {
 		fetchChapterData();
 		fetchRecordingData();
-	}, []);
+	}, [refreshBtn]);
 
 	return (
 		<div className={classes.container}>
@@ -133,10 +134,13 @@ const RecordingDashboard = ({ match }) => {
 					</div>
 					<div className={classes.textbox}>
 						<VideoResources
+							recordingId={recordingId}
 							chapterData={chapterData}
 							recordingData={recordingData}
 							setTranscriptionSeek={setTranscriptionSeek}
 							bufferDone={bufferdone}
+							setRefreshBtn={setRefreshBtn}
+							refreshBtn={refreshBtn}
 						/>
 					</div>
 				</div>

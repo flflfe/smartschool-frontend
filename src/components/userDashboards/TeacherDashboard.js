@@ -1,4 +1,6 @@
 import React from "react";
+import SubjectCardListComponent from "../subject/SubjectCardListComponent";
+import Navbar from "../Navbar";
 
 import { createUseStyles, useTheme } from "react-jss";
 const useStyles = createUseStyles((theme) => ({
@@ -23,7 +25,10 @@ const TeacherDashboard = () => {
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.dashboardwrapper}>Teacher dashboard</div>
+			<Navbar title={"Subjects"} />
+			<div className={classes.dashboardwrapper}>
+				<SubjectCardListComponent />
+			</div>
 		</div>
 	);
 };

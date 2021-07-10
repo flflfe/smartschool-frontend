@@ -7,6 +7,8 @@ import Topics from "../resourcebox/Topics";
 import QnaBot from "../resourcebox/QnaBot";
 import Followup from "../resourcebox/Followup";
 import Actions from "../resourcebox/Actions";
+import ResourceChecker from "../resourcebox/ResourceChecker";
+
 import { createUseStyles, useTheme } from "react-jss";
 const useStyles = createUseStyles((theme) => ({
 	resoursesWrapper: {
@@ -53,6 +55,9 @@ const VideoResources = ({
 	recordingData,
 	setTranscriptionSeek,
 	bufferDone,
+	setRefreshBtn,
+	refreshBtn,
+	recordingId,
 }) => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
@@ -66,7 +71,7 @@ const VideoResources = ({
 		subject,
 		_id,
 	} = chapterData;
-
+	const { isRequested, isComplete } = recordingData;
 	console.log(chapterData);
 	console.log(recordingData);
 
@@ -120,25 +125,35 @@ const VideoResources = ({
 				</div>
 			</div>
 			<div className={classes.mainbody}>
-				{activeBox === "Resources" ? (
-					<Resources resourceFiles={resourceFiles} />
-				) : activeBox === "Transcript" ? (
-					<Transcript
-						recordingData={recordingData}
-						setTranscriptionSeek={setTranscriptionSeek}
-						bufferDone={bufferDone}
+				{!isComplete || !isRequested ? (
+					<ResourceChecker
+						recordingId={recordingId}
+						setRefreshBtn={setRefreshBtn}
+						refreshBtn={refreshBtn}
 					/>
-				) : activeBox === "Summary" ? (
-					<Summary recordingData={recordingData} />
-				) : activeBox === "Topics" ? (
-					<Topics />
-				) : activeBox === "QNA Bot" ? (
-					<QnaBot />
-				) : activeBox === "Followup" ? (
-					<Followup />
-				) : activeBox === "Actions" ? (
-					<Actions />
-				) : null}
+				) : (
+					<>
+						{activeBox === "Resources" ? (
+							<Resources resourceFiles={resourceFiles} />
+						) : activeBox === "Transcript" ? (
+							<Transcript
+								recordingData={recordingData}
+								setTranscriptionSeek={setTranscriptionSeek}
+								bufferDone={bufferDone}
+							/>
+						) : activeBox === "Summary" ? (
+							<Summary recordingData={recordingData} />
+						) : activeBox === "Topics" ? (
+							<Topics />
+						) : activeBox === "QNA Bot" ? (
+							<QnaBot />
+						) : activeBox === "Followup" ? (
+							<Followup />
+						) : activeBox === "Actions" ? (
+							<Actions />
+						) : null}
+					</>
+				)}
 			</div>
 		</div>
 	);

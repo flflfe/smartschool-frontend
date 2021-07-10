@@ -8,6 +8,8 @@ const useStyles = createUseStyles((theme) => ({
 		height: "auto",
 		width: "100vw",
 		position: "relative",
+		justifyContent: "center",
+		alignItems: "center",
 	},
 	loader: {
 		fontSize: "2.5em",

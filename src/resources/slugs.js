@@ -3,6 +3,7 @@ export default {
 	home: "/home",
 	// private
 	dashboard: "/dashboard",
+	classrooms: "/classrooms",
 	classroom: `/classrooms/:classid`,
 	subjectdashboard: `/classrooms/:classid/:subjectid`,
 	chapterlist: `/classrooms/:classid/:subjectid/chapters`,
