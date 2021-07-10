@@ -1,4 +1,5 @@
 import React from "react";
+import SubjectCardListComponent from "../subject/SubjectCardListComponent";
 
 import { createUseStyles, useTheme } from "react-jss";
 
@@ -29,7 +30,11 @@ const ClassRoomDashboard = ({ match }) => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
 
-	return <div className={classes.container}>Subject List class dashcoard</div>;
+	return (
+		<div className={classes.container}>
+			<SubjectCardListComponent classroomID={classroomID} />
+		</div>
+	);
 };
 
 export default ClassRoomDashboard;
