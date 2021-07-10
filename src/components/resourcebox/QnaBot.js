@@ -20,7 +20,7 @@ const useStyles = createUseStyles((theme) => ({
 		fontWeight: 400,
 		lineHeight: "inherit",
 		width: "25em",
-		height: "auto",
+		height: "4em",
 		padding: "0.75rem 1.25rem",
 		border: "none",
 		outline: "none",
@@ -35,7 +35,10 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	sendQuestionbox: {
 		display: "flex",
+		height: "auto",
+		width: "100%",
 		justifyContent: "center",
+		flex: "1",
 	},
 	askQuestionBtn: {
 		fontFamily: "inherit",
@@ -76,10 +79,11 @@ const useStyles = createUseStyles((theme) => ({
 		textRendering: "optimizeLegibility",
 	},
 	questionAnwers: {
-		height: "70%",
+		height: "100%",
 		overflow: "scroll",
 		overflowX: "hidden",
-		padding: "1em 1.25rem",
+		padding: "1em 1.25em",
+		backgroundColor: `${theme.color.colorBlack2}`,
 	},
 	questionAnwerBox: {
 		height: "auto",
@@ -182,8 +186,8 @@ const QnaBot = ({ chapterData, recordingId, chapterId }) => {
 				) : (
 					<>
 						<div className={classes.questionAnwers}>
-							{questionAnswerArray.map((qa) => (
-								<div className={classes.questionAnwerBox}>
+							{questionAnswerArray.map((qa, index) => (
+								<div key={index} className={classes.questionAnwerBox}>
 									<div className={classes.question}>{qa.question}</div>
 									<div className={classes.answer}>{qa.answer}</div>
 								</div>

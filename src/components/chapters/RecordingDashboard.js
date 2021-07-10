@@ -30,7 +30,7 @@ const useStyles = createUseStyles((theme) => ({
 		alignItems: "center",
 		justifyContent: "center",
 
-		height: "70vh",
+		height: "80vh",
 		width: "60vw",
 		marginLeft: "2vw",
 		marginRight: "2vw",
@@ -44,7 +44,7 @@ const useStyles = createUseStyles((theme) => ({
 
 	textbox: {
 		border: `1px solid  ${theme.color.colorWhite}`,
-		height: "70vh",
+		height: "80vh",
 		width: "34vw",
 		marginRight: "2vw",
 	},
@@ -66,8 +66,8 @@ const RecordingDashboard = ({ match }) => {
 
 	const [transcriptionSeek, setTranscriptionSeek] = useState(0);
 
-	const { name, recordingUrl } = recordingData;
-	console.log(name, recordingUrl);
+	const { title, recordingUrl } = recordingData;
+	console.log(title, recordingUrl);
 
 	console.log(chapterData.resourceFiles);
 	console.log(recordingData);
@@ -123,12 +123,12 @@ const RecordingDashboard = ({ match }) => {
 
 	return (
 		<div className={classes.container}>
-			<ChapterNavBar title={name} />
+			<ChapterNavBar title={title} />
 			<div className={classes.mainbox}>
 				<div className={classes.videotextbox}>
 					<div className={classes.videobox}>
 						<VideoPlayer
-							title={name}
+							title={title}
 							recordingUrl={recordingUrl}
 							transcriptionSeek={transcriptionSeek}
 							setBufferDone={setBufferDone}

@@ -15,7 +15,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	headerText: {
 		flex: 1,
-		marginLeft: "1em",
+		marginLeft: "2em",
 		fontSize: "1.5em",
 	},
 }));
