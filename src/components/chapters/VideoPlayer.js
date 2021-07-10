@@ -81,13 +81,17 @@ const VideoPlayer = ({
 	const [muted, setMuted] = useState(false);
 	const [played, setPlayed] = useState(0);
 	const [duration, setDuration] = useState(0);
-	const [sliderValue, setSliderValue] = useState(0);
 
 	useEffect(() => {
-		const transcriptionSeekinSeconds = Math.round(transcriptionSeek / 1000);
+		const transcriptionSeekinSeconds = transcriptionSeek / 1000;
 		console.log(transcriptionSeekinSeconds);
+		console.log(playerRef.current.getCurrentTime());
+		setPlayed(transcriptionSeekinSeconds);
+		// console.log(
+		// 	playerRef.current.seekTo(transcriptionSeekinSeconds - 1, "seconds")
+		// );
 
-		playerRef.current.seekTo(transcriptionSeekinSeconds - 1, "seconds");
+		playerRef.current.seekTo(transcriptionSeekinSeconds, "seconds");
 	}, [transcriptionSeek]);
 
 	const showControls = () => {
@@ -138,8 +142,7 @@ const VideoPlayer = ({
 				playing={playing}
 				volume={volume}
 				muted={muted}
-				played={sliderValue}
-				duration={() => setDuration(duration)}
+				played={played}
 				onReady={() => setIsLoading(false)}
 				onBufferEnd={() => setBufferDone(true)}
 			/>
