@@ -1,4 +1,5 @@
 import React from "react";
+import ClassroomListComponent from "../classroom/ClassroomListComponent";
 
 import { createUseStyles, useTheme } from "react-jss";
 const useStyles = createUseStyles((theme) => ({
@@ -22,7 +23,9 @@ const SuperAdminDashboard = () => {
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.dashboardwrapper}>SuperAdmin Dashboard</div>
+			<div className={classes.dashboardwrapper}>
+				<ClassroomListComponent />
+			</div>
 		</div>
 	);
 };

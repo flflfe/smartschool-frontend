@@ -8,6 +8,8 @@ import SuperAdminDashboard from "../components/userDashboards/SuperAdminDashboar
 import TeacherDashboard from "../components/userDashboards/TeacherDashboard";
 import StudentDashboard from "../components/userDashboards/StudentDashboard";
 
+import ClassRoomDashboard from "../components/classroom/ClassRoomDashboard";
+
 function PrivateRoutes() {
 	const { role } = useContext(UserContext);
 
@@ -27,6 +29,7 @@ function PrivateRoutes() {
 						: null
 				}
 			/>
+			<Route exact path={SLUGS.classroom} component={ClassRoomDashboard} />
 
 			<Redirect to={SLUGS.dashboard} />
 		</Switch>

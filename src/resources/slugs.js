@@ -3,6 +3,7 @@ export default {
 	home: "/home",
 	// private
 	dashboard: "/dashboard",
+	classroom: `/classrooms/:classid`,
 
 	error: "/error",
 	register: "/register",
