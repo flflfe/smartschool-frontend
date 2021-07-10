@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import MovieIcon from "@material-ui/icons/Movie";
 
+import { useHistory } from "react-router";
+
 import { createUseStyles, useTheme } from "react-jss";
 const useStyles = createUseStyles((theme) => ({
 	container: {
@@ -66,11 +68,20 @@ const ChapterDashboard = ({ match }) => {
 	// const classid = match.params.classid;
 	const theme = useTheme();
 	const classes = useStyles(theme);
+	const history = useHistory();
 	const [isLoading, setIsLoading] = useState(true);
 	const chapterId = match.params.chapterid;
 
 	const [chapterData, setChapterData] = useState([]);
-	const { name, recordings } = chapterData;
+	const {
+		name,
+		recordings,
+		// resourceFiles,
+		// VocabularyList,
+		// chatBotId,
+		// subject,
+		// _id,
+	} = chapterData;
 	console.log(recordings);
 	console.log(name);
 
@@ -100,11 +111,23 @@ const ChapterDashboard = ({ match }) => {
 		fetchChapterData();
 	}, []);
 
+	const classId = match.params.classid;
+	const subjectId = match.params.subjectid;
+	const gotoRecordingDashboard = (recordingId) => {
+		console.log(recordingId);
+
+		history.push(
+			`/classrooms/${classId}/${subjectId}/chapters/${chapterId}/${recordingId}`
+		);
+	};
+
 	return (
 		<div className={classes.container}>
 			<div className={classes.mainbox}>
 				{recordings?.map((recording) => (
-					<div className={classes.recordingsCard}>
+					<div
+						className={classes.recordingsCard}
+						onClick={(e) => gotoRecordingDashboard(recording._id)}>
 						{console.log(recording._id)}
 						<div className={classes.recordingsdetails}>
 							<div className={classes.leftcol}>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import { createUseStyles, useTheme } from "react-jss";
 import Axios from "axios";
 import ChapterCard from "./ChapterCard";
@@ -50,6 +51,7 @@ const useStyles = createUseStyles((theme) => ({
 const ChapterListComponent = ({ match }) => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
+	const history = useHistory();
 	const subjectID = match.params.subjectid;
 
 	const [isLoading, setIsLoading] = useState(true);
@@ -80,6 +82,13 @@ const ChapterListComponent = ({ match }) => {
 		fetchClassrooms();
 	}, []);
 
+	const onClickHandler = (chapterid) => {
+		const subjectid = match.params.subjectid;
+		const classid = match.params.classid;
+
+		history.push(`/classrooms/${classid}/${subjectid}/chapters/${chapterid}`);
+	};
+
 	return (
 		<div className={classes.container}>
 			<div className={classes.chapterlist}>
@@ -89,7 +98,13 @@ const ChapterListComponent = ({ match }) => {
 					<div className={classes.listMain}>
 						{chapterList.map((chapter) => (
 							<div className={classes.classroomCardList}>
-								<ChapterCard name={chapter.name} />
+								<ChapterCard
+									name={chapter.name}
+									onClickHandler={(e) => {
+										console.log(chapter._id);
+										onClickHandler(chapter._id);
+									}}
+								/>
 							</div>
 						))}
 					</div>

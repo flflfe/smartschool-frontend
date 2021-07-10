@@ -6,6 +6,8 @@ export default {
 	classroom: `/classrooms/:classid`,
 	subjectdashboard: `/classrooms/:classid/:subjectid`,
 	chapterlist: `/classrooms/:classid/:subjectid/chapters`,
+	chapterdashboard: `/classrooms/:classid/:subjectid/chapters/:chapterid`,
+	recordingdashboard: `/classrooms/:classid/:subjectid/chapters/:chapterid/:recordingid`,
 
 	error: "/error",
 	register: "/register",

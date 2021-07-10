@@ -12,6 +12,7 @@ import ClassRoomDashboard from "../components/classroom/ClassRoomDashboard";
 import SubjectDashboard from "../components/subject/SubjectDashboard";
 import ChapterListComponent from "../components/chapters/ChapterListComponent";
 import ChapterDashboard from "../components/chapters/ChapterDashboard";
+import RecordingDashboard from "../components/chapters/RecordingDashboard";
 
 function PrivateRoutes() {
 	const { role } = useContext(UserContext);
@@ -48,6 +49,11 @@ function PrivateRoutes() {
 				exact
 				path={SLUGS.chapterdashboard}
 				component={ChapterDashboard}
+			/>
+			<Route
+				exact
+				path={SLUGS.recordingdashboard}
+				component={RecordingDashboard}
 			/>
 
 			<Redirect to={SLUGS.dashboard} />
