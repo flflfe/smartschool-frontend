@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ClassroomCard from "../classroom/ClassroomCard";
 import { useHistory } from "react-router";
-
+import RefreshIcon from "@material-ui/icons/Refresh";
 import Axios from "axios";
 import LoadingComponent from "../LoadingComponent";
 
@@ -40,6 +40,10 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	refreshBtn: {
 		marginLeft: "1em",
+		backgroundColor: `${theme.color.colorGreen}`,
+		border: "none",
+		textAlign: "center",
+		borderRadius: "0.5em",
 	},
 }));
 
@@ -87,7 +91,7 @@ const ClassroomListComponent = () => {
 				<button
 					className={classes.refreshBtn}
 					onClick={() => setRefresh(!refresh)}>
-					Refresh
+					<RefreshIcon fontSize="large" />
 				</button>
 				{isLoading ? (
 					<LoadingComponent />

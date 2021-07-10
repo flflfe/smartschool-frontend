@@ -4,7 +4,7 @@ import { createUseStyles, useTheme } from "react-jss";
 import Axios from "axios";
 import ChapterCard from "./ChapterCard";
 import Navbar from "../Navbar";
-
+import RefreshIcon from "@material-ui/icons/Refresh";
 import LoadingComponent from "../LoadingComponent";
 
 const useStyles = createUseStyles((theme) => ({
@@ -50,6 +50,10 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	refreshBtn: {
 		marginLeft: "1em",
+		backgroundColor: `${theme.color.colorGreen}`,
+		border: "none",
+		textAlign: "center",
+		borderRadius: "0.5em",
 	},
 }));
 
@@ -103,8 +107,9 @@ const ChapterListComponent = ({ match }) => {
 				<button
 					className={classes.refreshBtn}
 					onClick={() => setRefresh(!refresh)}>
-					Refresh
+					<RefreshIcon fontSize="large" />
 				</button>
+
 				{isLoading ? (
 					<LoadingComponent />
 				) : (

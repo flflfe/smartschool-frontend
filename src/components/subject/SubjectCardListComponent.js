@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import SubjectCard from "./SubjectCard";
 
 import Axios from "axios";
+import RefreshIcon from "@material-ui/icons/Refresh";
 import { UserContext } from "../../contexts/UserContext";
 
 import { createUseStyles, useTheme } from "react-jss";
@@ -42,6 +43,10 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	refreshBtn: {
 		marginLeft: "1em",
+		backgroundColor: `${theme.color.colorGreen}`,
+		border: "none",
+		textAlign: "center",
+		borderRadius: "0.5em",
 	},
 }));
 const SubjectCardListComponent = ({ classroomID, reload }) => {
@@ -117,7 +122,7 @@ const SubjectCardListComponent = ({ classroomID, reload }) => {
 				<button
 					className={classes.refreshBtn}
 					onClick={() => setRefresh(!refresh)}>
-					Refresh
+					<RefreshIcon fontSize="large" />
 				</button>
 				<div className={classes.listMain}>
 					{subjectList?.map((subject) => (

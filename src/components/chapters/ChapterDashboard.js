@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Axios from "axios";
 import Navbar from "../Navbar";
-
+import RefreshIcon from "@material-ui/icons/Refresh";
 import MovieIcon from "@material-ui/icons/Movie";
 
 import { useHistory } from "react-router";
@@ -65,6 +65,13 @@ const useStyles = createUseStyles((theme) => ({
 		marginTop: "0.3rem",
 		fontWeight: "400",
 	},
+	refreshBtn: {
+		marginLeft: "1em",
+		backgroundColor: `${theme.color.colorGreen}`,
+		border: "none",
+		textAlign: "center",
+		borderRadius: "0.5em",
+	},
 }));
 const ChapterDashboard = ({ match }) => {
 	// const classid = match.params.classid;
@@ -73,6 +80,7 @@ const ChapterDashboard = ({ match }) => {
 	const history = useHistory();
 	const [isLoading, setIsLoading] = useState(true);
 	const chapterId = match.params.chapterid;
+	const [refresh, setRefresh] = useState(true);
 
 	const [chapterData, setChapterData] = useState([]);
 	const {
@@ -111,7 +119,7 @@ const ChapterDashboard = ({ match }) => {
 
 	useEffect(() => {
 		fetchChapterData();
-	}, []);
+	}, [refresh]);
 
 	const classId = match.params.classid;
 	const subjectId = match.params.subjectid;
@@ -126,6 +134,11 @@ const ChapterDashboard = ({ match }) => {
 	return (
 		<div className={classes.container}>
 			<Navbar title="Recordings" chapterId={chapterId} />
+			<button
+				className={classes.refreshBtn}
+				onClick={() => setRefresh(!refresh)}>
+				<RefreshIcon fontSize="large" />
+			</button>
 			<div className={classes.mainbox}>
 				{recordings?.map((recording) => (
 					<div
