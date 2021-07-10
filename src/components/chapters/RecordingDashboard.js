@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import VideoPlayer from "./VideoPlayer";
+import VideoResources from "./VideoResources";
+import ChapterNavBar from "./ChapterNavBar";
 
 import Axios from "axios";
 
@@ -58,6 +61,10 @@ const RecordingDashboard = ({ match }) => {
 	const [chapterData, setChapterData] = useState([]);
 	const [recordingData, setRecordingData] = useState([]);
 
+	const [bufferdone, setBufferDone] = useState(false);
+
+	const [transcriptionSeek, setTranscriptionSeek] = useState(0);
+
 	const { name, recordingUrl } = recordingData;
 	console.log(name, recordingUrl);
 
@@ -111,7 +118,31 @@ const RecordingDashboard = ({ match }) => {
 		fetchRecordingData();
 	}, []);
 
-	return <div className={classes.container}>Recording Dashboard</div>;
+	return (
+		<div className={classes.container}>
+			<ChapterNavBar title={name} />
+			<div className={classes.mainbox}>
+				<div className={classes.videotextbox}>
+					<div className={classes.videobox}>
+						<VideoPlayer
+							title={name}
+							recordingUrl={recordingUrl}
+							transcriptionSeek={transcriptionSeek}
+							setBufferDone={setBufferDone}
+						/>
+					</div>
+					<div className={classes.textbox}>
+						<VideoResources
+							chapterData={chapterData}
+							recordingData={recordingData}
+							setTranscriptionSeek={setTranscriptionSeek}
+							bufferDone={bufferdone}
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default RecordingDashboard;
