@@ -9,6 +9,9 @@ import TeacherDashboard from "../components/userDashboards/TeacherDashboard";
 import StudentDashboard from "../components/userDashboards/StudentDashboard";
 
 import ClassRoomDashboard from "../components/classroom/ClassRoomDashboard";
+import SubjectDashboard from "../components/subject/SubjectDashboard";
+import ChapterListComponent from "../components/chapters/ChapterListComponent";
+import ChapterDashboard from "../components/chapters/ChapterDashboard";
 
 function PrivateRoutes() {
 	const { role } = useContext(UserContext);
@@ -30,6 +33,22 @@ function PrivateRoutes() {
 				}
 			/>
 			<Route exact path={SLUGS.classroom} component={ClassRoomDashboard} />
+			<Route
+				exact
+				path={SLUGS.subjectdashboard}
+				component={SubjectDashboard}
+			/>
+			<Route
+				exact
+				path={SLUGS.chapterlist}
+				component={ChapterListComponent}
+			/>
+
+			<Route
+				exact
+				path={SLUGS.chapterdashboard}
+				component={ChapterDashboard}
+			/>
 
 			<Redirect to={SLUGS.dashboard} />
 		</Switch>

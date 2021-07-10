@@ -4,6 +4,8 @@ export default {
 	// private
 	dashboard: "/dashboard",
 	classroom: `/classrooms/:classid`,
+	subjectdashboard: `/classrooms/:classid/:subjectid`,
+	chapterlist: `/classrooms/:classid/:subjectid/chapters`,
 
 	error: "/error",
 	register: "/register",

@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { createUseStyles, useTheme } from "react-jss";
+import { useHistory } from "react-router";
+
+import SubjectCard from "./SubjectCard";
 
 import Axios from "axios";
 import { UserContext } from "../../contexts/UserContext";
 
+import { createUseStyles, useTheme } from "react-jss";
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		display: "flex",
@@ -40,6 +43,7 @@ const useStyles = createUseStyles((theme) => ({
 const SubjectCardListComponent = ({ classroomID, reload }) => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
+	const history = useHistory();
 
 	const { role, classroom } = useContext(UserContext);
 	console.log(role, classroom, classroomID);
@@ -96,13 +100,26 @@ const SubjectCardListComponent = ({ classroomID, reload }) => {
 		fetchSubjects();
 	}, [role, classroomID]);
 
+	const onClickHandler = (classid, subjectid) => {
+		console.log(classid);
+		// history.push(`/classrooms/${classid}/${subjectid}`);
+		history.push(`/classrooms/${classid}/${subjectid}/chapters`);
+	};
+
 	return (
 		<div className={classes.container}>
 			<div className={classes.subjectList}>
 				<div className={classes.listMain}>
 					{subjectList?.map((subject) => (
 						<div className={classes.subjectCardList} key={subject._id}>
-							{subject.name}
+							<SubjectCard
+								key={subject.name}
+								name={subject.name}
+								teachers={subject.teachers}
+								onClickHandler={(e) => {
+									onClickHandler(subject.classroom, subject._id);
+								}}
+							/>
 						</div>
 					))}
 				</div>
