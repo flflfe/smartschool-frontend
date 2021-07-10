@@ -24,6 +24,7 @@ const useStyles = createUseStyles((theme) => ({
 		height: "auto",
 
 		width: "auto",
+		marginTop: "2em",
 
 		display: "grid",
 		justifyItems: "stretch",
@@ -39,11 +40,15 @@ const useStyles = createUseStyles((theme) => ({
 	subjectCardList: {
 		margin: "0.5em",
 	},
+	refreshBtn: {
+		marginLeft: "1em",
+	},
 }));
 const SubjectCardListComponent = ({ classroomID, reload }) => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
 	const history = useHistory();
+	const [refresh, setRefresh] = useState(true);
 
 	const { role, classroom } = useContext(UserContext);
 	console.log(role, classroom, classroomID);
@@ -98,7 +103,7 @@ const SubjectCardListComponent = ({ classroomID, reload }) => {
 
 	useEffect(() => {
 		fetchSubjects();
-	}, [role, classroomID]);
+	}, [role, classroomID, refresh]);
 
 	const onClickHandler = (classid, subjectid) => {
 		console.log(classid);
@@ -109,6 +114,11 @@ const SubjectCardListComponent = ({ classroomID, reload }) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.subjectList}>
+				<button
+					className={classes.refreshBtn}
+					onClick={() => setRefresh(!refresh)}>
+					Refresh
+				</button>
 				<div className={classes.listMain}>
 					{subjectList?.map((subject) => (
 						<div className={classes.subjectCardList} key={subject._id}>

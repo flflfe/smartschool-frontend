@@ -33,9 +33,13 @@ const useStyles = createUseStyles((theme) => ({
 		gridTemplateColumns: "1fr 1fr 1fr",
 
 		gridAutoFlow: "row",
+		marginTop: "2.5em",
 	},
 	classroomCardList: {
 		margin: "0.5em",
+	},
+	refreshBtn: {
+		marginLeft: "1em",
 	},
 }));
 
@@ -43,6 +47,7 @@ const ClassroomListComponent = () => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
 	const history = useHistory();
+	const [refresh, setRefresh] = useState(true);
 
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -70,7 +75,7 @@ const ClassroomListComponent = () => {
 
 	useEffect(() => {
 		fetchClassrooms();
-	}, []);
+	}, [refresh]);
 	const onClickHandler = (classid) => {
 		// console.log(`Class ID: ${classid}`);
 		history.push(`/classrooms/${classid}`);
@@ -79,6 +84,11 @@ const ClassroomListComponent = () => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.classroomlist}>
+				<button
+					className={classes.refreshBtn}
+					onClick={() => setRefresh(!refresh)}>
+					Refresh
+				</button>
 				{isLoading ? (
 					<LoadingComponent />
 				) : (

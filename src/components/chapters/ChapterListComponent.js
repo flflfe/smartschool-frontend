@@ -43,9 +43,13 @@ const useStyles = createUseStyles((theme) => ({
 		gridTemplateColumns: "1fr 1fr 1fr",
 
 		gridAutoFlow: "row",
+		marginTop: "2em",
 	},
 	classroomCardList: {
 		margin: "0.5em",
+	},
+	refreshBtn: {
+		marginLeft: "1em",
 	},
 }));
 
@@ -54,6 +58,7 @@ const ChapterListComponent = ({ match }) => {
 	const classes = useStyles(theme);
 	const history = useHistory();
 	const subjectID = match.params.subjectid;
+	const [refresh, setRefresh] = useState(true);
 
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -81,7 +86,7 @@ const ChapterListComponent = ({ match }) => {
 
 	useEffect(() => {
 		fetchClassrooms();
-	}, []);
+	}, [refresh]);
 
 	const onClickHandler = (chapterid) => {
 		const subjectid = match.params.subjectid;
@@ -94,6 +99,12 @@ const ChapterListComponent = ({ match }) => {
 		<div className={classes.container}>
 			<div className={classes.chapterlist}>
 				<Navbar title={"Chapters"} subjectID={subjectID} />
+
+				<button
+					className={classes.refreshBtn}
+					onClick={() => setRefresh(!refresh)}>
+					Refresh
+				</button>
 				{isLoading ? (
 					<LoadingComponent />
 				) : (
