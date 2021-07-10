@@ -10,7 +10,7 @@ const useStyles = createUseStyles((theme) => ({
 		display: "flex",
 		flexDirection: "column",
 		backgroundColor: `${theme.color.colorBlack2}`,
-		position: "relative",
+
 		height: "100%",
 		width: "100%",
 	},
@@ -34,8 +34,6 @@ const useStyles = createUseStyles((theme) => ({
 		flex: 1,
 	},
 	sendQuestionbox: {
-		position: "absolute",
-		bottom: "5px",
 		display: "flex",
 		justifyContent: "center",
 	},
@@ -47,7 +45,7 @@ const useStyles = createUseStyles((theme) => ({
 		lineHeight: "inherit",
 		cursor: "pointer",
 		width: "5em",
-		height: "100%",
+		height: "4em",
 		padding: "0.65rem 1.25rem",
 		border: "none",
 		outline: "none",
@@ -78,15 +76,17 @@ const useStyles = createUseStyles((theme) => ({
 		textRendering: "optimizeLegibility",
 	},
 	questionAnwers: {
-		height: "80%",
+		height: "70%",
 		overflow: "scroll",
 		overflowX: "hidden",
-		padding: "0.65rem 1.25rem",
+		padding: "1em 1.25rem",
 	},
 	questionAnwerBox: {
+		height: "auto",
 		margin: "0.8em 0.8em 0.8em 0.2em",
 		padding: "0.5em",
 		transition: "all ease 350ms",
+		backgroundColor: `${theme.color.colorOpacityBlack2}`,
 		borderRadius: "1em",
 		border: `1px solid ${theme.color.colorWhite}`,
 		"&:hover": {
