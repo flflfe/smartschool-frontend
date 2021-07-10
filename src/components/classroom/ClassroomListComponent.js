@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { createUseStyles, useTheme } from "react-jss";
 import ClassroomCard from "../classroom/ClassroomCard";
+import { useHistory } from "react-router";
+
 import Axios from "axios";
 import LoadingComponent from "../LoadingComponent";
 
+import { createUseStyles, useTheme } from "react-jss";
 const useStyles = createUseStyles((theme) => ({
 	container: {
 		display: "flex",
@@ -40,6 +42,7 @@ const useStyles = createUseStyles((theme) => ({
 const ClassroomListComponent = () => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
+	const history = useHistory();
 
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -68,6 +71,10 @@ const ClassroomListComponent = () => {
 	useEffect(() => {
 		fetchClassrooms();
 	}, []);
+	const onClickHandler = (classid) => {
+		// console.log(`Class ID: ${classid}`);
+		history.push(`/classrooms/${classid}`);
+	};
 
 	return (
 		<div className={classes.container}>
@@ -83,6 +90,10 @@ const ClassroomListComponent = () => {
 								<ClassroomCard
 									name={classroom.name}
 									teachers={classroom.teachers}
+									onClickHandler={(e) => {
+										// console.log(classroom._id);
+										onClickHandler(classroom._id);
+									}}
 								/>
 							</div>
 						))}
