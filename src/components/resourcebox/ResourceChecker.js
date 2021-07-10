@@ -77,7 +77,9 @@ const ResourceChecker = ({
 			let response = await Axios({
 				method: "post",
 				url: `http://localhost:4000/recordings/${recordingId}/requestprocessing`,
-				data: speakerCount,
+				data: {
+					speakerCount: speakerCount,
+				},
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `${window.localStorage.getItem("token")}`,
@@ -111,7 +113,7 @@ const ResourceChecker = ({
 	}
 	return (
 		<div>
-			{isRequested && !isComplete ? (
+			{isRequested === true && isComplete === false ? (
 				<>
 					<div className={classes.loadingBox}>
 						This may take a while... Please Check Status after some time.
@@ -124,7 +126,7 @@ const ResourceChecker = ({
 						onClick={() => checkStatus()}
 					/>
 				</>
-			) : !isRequested && !isComplete ? (
+			) : isRequested === false && isComplete === false ? (
 				<div className={classes.loadingBox}>
 					<label htmlFor="speakerCount">
 						Select Number of Speakers in the Video

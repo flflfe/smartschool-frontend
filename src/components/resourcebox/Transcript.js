@@ -122,12 +122,36 @@ const Transcript = ({
 									onClick={(e) =>
 										setTranscriptionSeek(mappedTranscript.startTime)
 									}>
+									{console.log(mappedTranscript)}
 									<div className={classes.speaker}>
 										{mappedTranscript.from.name}
 									</div>
 									<p className={classes.transcripttext}>
 										{mappedTranscript.text}
 									</p>
+
+									{mappedTranscript.sentiment.suggested ===
+									"neutral" ? (
+										<p
+											className={classes.transcripttext}
+											style={{ color: `${theme.color.colorBlue}` }}>
+											{mappedTranscript.sentiment.suggested}
+										</p>
+									) : mappedTranscript.sentiment.suggested ===
+									  "negative" ? (
+										<p
+											className={classes.transcripttext}
+											style={{ color: `${theme.color.colorRed}` }}>
+											{mappedTranscript.sentiment.suggested}
+										</p>
+									) : mappedTranscript.sentiment.suggested ===
+									  "positive" ? (
+										<p
+											className={classes.transcripttext}
+											style={{ color: `${theme.color.colorGreen}` }}>
+											{mappedTranscript.sentiment.suggested}
+										</p>
+									) : null}
 								</div>
 							))}
 					</div>

@@ -116,6 +116,8 @@ const RecordingDashboard = ({ match }) => {
 
 	useEffect(() => {
 		fetchChapterData();
+	}, []);
+	useEffect(() => {
 		fetchRecordingData();
 	}, [refreshBtn]);
 
@@ -134,6 +136,7 @@ const RecordingDashboard = ({ match }) => {
 					</div>
 					<div className={classes.textbox}>
 						<VideoResources
+							chapterId={chapterId}
 							recordingId={recordingId}
 							chapterData={chapterData}
 							recordingData={recordingData}

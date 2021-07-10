@@ -58,6 +58,7 @@ const VideoResources = ({
 	setRefreshBtn,
 	refreshBtn,
 	recordingId,
+	chapterId,
 }) => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
@@ -125,11 +126,13 @@ const VideoResources = ({
 				</div>
 			</div>
 			<div className={classes.mainbody}>
-				{!isComplete || !isRequested ? (
+				{isComplete !== true || isRequested !== true ? (
 					<ResourceChecker
 						recordingId={recordingId}
 						setRefreshBtn={setRefreshBtn}
 						refreshBtn={refreshBtn}
+						isComplete={isComplete}
+						isRequested={isRequested}
 					/>
 				) : (
 					<>
@@ -146,11 +149,15 @@ const VideoResources = ({
 						) : activeBox === "Topics" ? (
 							<Topics />
 						) : activeBox === "QNA Bot" ? (
-							<QnaBot />
+							<QnaBot
+								chapterId={chapterId}
+								chapterData={chapterData}
+								recordingId={recordingId}
+							/>
 						) : activeBox === "Followup" ? (
 							<Followup />
 						) : activeBox === "Actions" ? (
-							<Actions />
+							<Actions recordingId={recordingId} />
 						) : null}
 					</>
 				)}

@@ -174,6 +174,7 @@ const CreateSubject = ({ classroomID }) => {
 					},
 					headers: {
 						"Content-Type": "application/json",
+
 						Authorization: `${window.localStorage.getItem("token")}`,
 					},
 				});
