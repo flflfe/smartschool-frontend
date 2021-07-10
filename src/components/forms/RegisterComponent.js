@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createUseStyles, useTheme } from "react-jss";
 import Axios from "axios";
 import { KeyboardDatePicker } from "@material-ui/pickers";
@@ -12,15 +12,15 @@ const useStyles = createUseStyles((theme) => ({
 		backgroundColor: "rgba(0, 0, 0, 0.5)",
 		height: "100vh",
 		width: "100vw",
-		padding: "auto 2em auto 2em",
+		padding: "3em 2em auto 2em",
 		overflow: "hidden",
 	},
 
 	wrapper: {
 		maxWidth: "28em",
 		width: "100%",
-		height: "90vh",
-		margin: "1em auto",
+		height: "10vh",
+		margin: "4em auto",
 		padding: "2rem 2rem",
 		border: "none",
 		outline: "none",
@@ -39,7 +39,7 @@ const useStyles = createUseStyles((theme) => ({
 	form: {
 		width: "100%",
 		height: "auto",
-		marginTop: "4em",
+		marginTop: "2em",
 	},
 	inputcontrol: {
 		display: "flex",
@@ -136,7 +136,7 @@ const RegisterComponent = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [dob, setDob] = useState(new Date());
-	const [classroom, setClassroom] = useState("");
+	const [classroom, setClassroom] = useState([]);
 	const [password, setPassword] = useState("");
 	const [passwordcheck, setPasswordCheck] = useState("");
 	const [error, setError] = useState("");
@@ -151,11 +151,34 @@ const RegisterComponent = () => {
 	};
 	console.log(data);
 	const [classroomList, setClassRoomList] = useState([
-		{ name: "60d46b768a26b8afcf85758c" },
-		{ name: "test1" },
-		{ name: "test2" },
-		{ name: "test3" },
+		// { name: "60d46b768a26b8afcf85758c" },
+		// { name: "test1" },
+		// { name: "test2" },
+		// { name: "test3" },
 	]);
+
+	async function fetchClassrooms() {
+		try {
+			let response = await Axios({
+				method: "get",
+
+				url: `http://localhost:4000/classrooms`,
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `${window.localStorage.getItem("token")}`,
+				},
+			});
+			let classrooms = await response.data.classrooms;
+			setClassRoomList(classrooms);
+			console.log(classroomList);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	useEffect(() => {
+		fetchClassrooms();
+	}, []);
 
 	const submitForm = () => {
 		if (email === "" || password === "" || dob === "") {
@@ -241,17 +264,18 @@ const RegisterComponent = () => {
 							<Autocomplete
 								id="combo-box-demo"
 								className={classes.classSelector}
-								onInputChange={(event, value) => console.log(value)}
+								onInputChange={(event, value) => setClassroom(value)}
 								options={classroomList}
 								getOptionLabel={(option) => option.name}
 								fullWidth
-								value={classroom}
+								clearOnEscape
+								value={classroom.name}
 								renderInput={(params) => (
 									<TextField
 										{...params}
 										label="Select Classroom"
 										variant="standard"
-										value={classroom}
+										value={classroom.name}
 									/>
 								)}
 							/>
