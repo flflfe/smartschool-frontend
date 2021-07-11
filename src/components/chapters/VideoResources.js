@@ -150,7 +150,7 @@ const VideoResources = ({
 							) : activeBox === "Summary" ? (
 								<Summary recordingData={recordingData} />
 							) : activeBox === "Topics" ? (
-								<Topics />
+								<Topics recordingId={recordingId} />
 							) : activeBox === "QNA Bot" ? (
 								<QnaBot
 									chapterId={chapterId}
