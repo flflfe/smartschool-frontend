@@ -37,7 +37,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
-        <li><a href="#confif">Confif</a></li>
+        <li><a href="#config">Config</a></li>
       </ul>
     </li>
     <li><a href="#license">License</a></li>
@@ -51,10 +51,10 @@ A natural language processing-powered cross-platform service for students of the
 
 These repository is accompanied by the following repositories.
 
-# Backend
+# Frontend
 
 <a href="https://github.com/codekavya/smartschool-backend">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=codekavya&repo=smartschool-frontend&theme=material-palenight" />
+  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=codekavya&repo=smartschool-backend&theme=material-palenight" />
 </a>    
 <a href="https://github.com/codekavya/smartschool-mobile">
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=codekavya&repo=smartschool-mobile&theme=material-palenight" />
