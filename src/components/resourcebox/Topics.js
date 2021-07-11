@@ -62,12 +62,15 @@ const Topics = ({ recordingId }) => {
 	useEffect(() => {
 		fetchTopics();
 	}, []);
+
 	return (
 		<div className={classes.container}>
 			{console.log(recordingId)}
 			<div className={classes.topicbox}>
-				{topics?.map((topic) => (
-					<p onClick={() => handlegotolink(topic.text)}>{topic.text}</p>
+				{topics?.map((topic, key) => (
+					<p key={key} onClick={() => handlegotolink(topic.text)}>
+						{topic.text}
+					</p>
 				))}
 			</div>
 		</div>

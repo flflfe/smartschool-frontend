@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 
-import Resources from "../resourcebox/Resources";
 import Transcript from "../resourcebox/Transcript";
 import Summary from "../resourcebox/Summary";
 import Topics from "../resourcebox/Topics";
 import QnaBot from "../resourcebox/QnaBot";
-import Followup from "../resourcebox/Followup";
 import Actions from "../resourcebox/Actions";
 import ResourceChecker from "../resourcebox/ResourceChecker";
 
 import { createUseStyles, useTheme } from "react-jss";
+import Questions from "../resourcebox/Questions";
 const useStyles = createUseStyles((theme) => ({
 	resoursesWrapper: {
 		height: "100%",
@@ -63,15 +62,6 @@ const VideoResources = ({
 	const theme = useTheme();
 	const classes = useStyles(theme);
 
-	const {
-		name,
-		recordings,
-		resourceFiles,
-		VocabularyList,
-		chatBotId,
-		subject,
-		_id,
-	} = chapterData;
 	const { isRequested, isComplete } = recordingData;
 	console.log(chapterData);
 	console.log(recordingData);
@@ -116,8 +106,8 @@ const VideoResources = ({
 
 					<div
 						className={classes.navBarItem}
-						onClick={() => navBarActiveHandler("Followup")}>
-						Followups
+						onClick={() => navBarActiveHandler("Questions")}>
+						Questions
 					</div>
 					<div
 						className={classes.navBarItem}
@@ -157,8 +147,8 @@ const VideoResources = ({
 									chapterData={chapterData}
 									recordingId={recordingId}
 								/>
-							) : activeBox === "Followup" ? (
-								<Followup />
+							) : activeBox === "Questions" ? (
+								<Questions recordingId={recordingId} />
 							) : activeBox === "Actions" ? (
 								<Actions recordingId={recordingId} />
 							) : null

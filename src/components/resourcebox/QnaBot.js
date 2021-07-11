@@ -175,8 +175,8 @@ const QnaBot = ({ chapterData, recordingId, chapterId }) => {
 
 			questionAnswerArray.push({
 				question: question,
-				answer: data.answer.answers[0].answer,
-				shortanswer: data.answer.answers[0].answerSpan.text,
+				answer: data.answer?.answers[0].answer,
+				shortanswer: data.answer?.answers[0].answerSpan.text,
 			});
 			setQuestion("");
 
