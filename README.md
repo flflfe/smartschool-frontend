@@ -51,7 +51,7 @@ A natural language processing-powered cross-platform service for students of the
 
 These repository is accompanied by the following repositories.
 
-# Frontend
+# Backend & Mobile
 
 <a href="https://github.com/codekavya/smartschool-backend">
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=codekavya&repo=smartschool-backend&theme=material-palenight" />
