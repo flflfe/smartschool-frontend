@@ -11,7 +11,7 @@ const useStyles = createUseStyles((theme) => ({
 	},
 	header: {
 		display: "flex",
-		padding: "3em 0 1em 0",
+		padding: "2em 0 1em 0",
 	},
 	headerText: {
 		flex: 1,

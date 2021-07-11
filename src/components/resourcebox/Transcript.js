@@ -71,7 +71,7 @@ const Transcript = ({
 	const recordingid = recordingData._id;
 	const [transcript, setTrancript] = useState([]);
 	const [query, setQuery] = useState("");
-	console.log(transcript);
+	// console.log(transcript);
 
 	async function fetchTranscript() {
 		try {
@@ -122,7 +122,7 @@ const Transcript = ({
 									onClick={(e) =>
 										setTranscriptionSeek(mappedTranscript.startTime)
 									}>
-									{console.log(mappedTranscript)}
+									{/* {console.log(mappedTranscript)} */}
 									<div className={classes.speaker}>
 										{mappedTranscript.from.name}
 									</div>

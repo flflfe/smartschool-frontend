@@ -76,7 +76,7 @@ const VideoResources = ({
 	console.log(chapterData);
 	console.log(recordingData);
 
-	const [activeBox, setActiveBox] = useState("Resources");
+	const [activeBox, setActiveBox] = useState("Transcript");
 
 	const navBarActiveHandler = (value) => {
 		setActiveBox(value);
@@ -86,11 +86,11 @@ const VideoResources = ({
 		<div className={classes.resoursesWrapper}>
 			<div className={classes.navBar}>
 				<div className={classes.navBarRow}>
-					<div
+					{/* <div
 						className={classes.navBarItem}
 						onClick={() => navBarActiveHandler("Resources")}>
 						Resources
-					</div>
+					</div> */}
 					<div
 						className={classes.navBarItem}
 						onClick={() => navBarActiveHandler("Transcript")}>
@@ -101,6 +101,11 @@ const VideoResources = ({
 						onClick={() => navBarActiveHandler("Summary")}>
 						Summary
 					</div>
+					<div
+						className={classes.navBarItem}
+						onClick={() => navBarActiveHandler("QNA Bot")}>
+						QNA Bot
+					</div>
 				</div>
 				<div className={classes.navBarRow}>
 					<div
@@ -108,11 +113,7 @@ const VideoResources = ({
 						onClick={() => navBarActiveHandler("Topics")}>
 						Topics
 					</div>
-					<div
-						className={classes.navBarItem}
-						onClick={() => navBarActiveHandler("QNA Bot")}>
-						QNA Bot
-					</div>
+
 					<div
 						className={classes.navBarItem}
 						onClick={() => navBarActiveHandler("Followup")}>
@@ -136,29 +137,32 @@ const VideoResources = ({
 					/>
 				) : (
 					<>
-						{activeBox === "Resources" ? (
-							<Resources resourceFiles={resourceFiles} />
-						) : activeBox === "Transcript" ? (
-							<Transcript
-								recordingData={recordingData}
-								setTranscriptionSeek={setTranscriptionSeek}
-								bufferDone={bufferDone}
-							/>
-						) : activeBox === "Summary" ? (
-							<Summary recordingData={recordingData} />
-						) : activeBox === "Topics" ? (
-							<Topics />
-						) : activeBox === "QNA Bot" ? (
-							<QnaBot
-								chapterId={chapterId}
-								chapterData={chapterData}
-								recordingId={recordingId}
-							/>
-						) : activeBox === "Followup" ? (
-							<Followup />
-						) : activeBox === "Actions" ? (
-							<Actions recordingId={recordingId} />
-						) : null}
+						{
+							// activeBox === "Resources" ? (
+							// 	<Resources resourceFiles={resourceFiles} />
+							// ) :
+							activeBox === "Transcript" ? (
+								<Transcript
+									recordingData={recordingData}
+									setTranscriptionSeek={setTranscriptionSeek}
+									bufferDone={bufferDone}
+								/>
+							) : activeBox === "Summary" ? (
+								<Summary recordingData={recordingData} />
+							) : activeBox === "Topics" ? (
+								<Topics />
+							) : activeBox === "QNA Bot" ? (
+								<QnaBot
+									chapterId={chapterId}
+									chapterData={chapterData}
+									recordingId={recordingId}
+								/>
+							) : activeBox === "Followup" ? (
+								<Followup />
+							) : activeBox === "Actions" ? (
+								<Actions recordingId={recordingId} />
+							) : null
+						}
 					</>
 				)}
 			</div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import VideoPlayer from "./VideoPlayer";
 import VideoResources from "./VideoResources";
 import ChapterNavBar from "./ChapterNavBar";
+import Resources from "../resourcebox/Resources";
 
 import Axios from "axios";
 
@@ -30,7 +31,7 @@ const useStyles = createUseStyles((theme) => ({
 		alignItems: "center",
 		justifyContent: "center",
 
-		height: "80vh",
+		height: "70vh",
 		width: "60vw",
 		marginLeft: "2vw",
 		marginRight: "2vw",
@@ -44,7 +45,7 @@ const useStyles = createUseStyles((theme) => ({
 
 	textbox: {
 		border: `1px solid  ${theme.color.colorWhite}`,
-		height: "80vh",
+		height: "70vh",
 		width: "34vw",
 		marginRight: "2vw",
 	},
@@ -67,6 +68,7 @@ const RecordingDashboard = ({ match }) => {
 	const [transcriptionSeek, setTranscriptionSeek] = useState(0);
 
 	const { title, recordingUrl } = recordingData;
+	const { resourceFiles } = chapterData;
 	console.log(title, recordingUrl);
 
 	console.log(chapterData.resourceFiles);
@@ -147,6 +149,7 @@ const RecordingDashboard = ({ match }) => {
 						/>
 					</div>
 				</div>
+				<Resources resourceFiles={resourceFiles} />
 			</div>
 		</div>
 	);

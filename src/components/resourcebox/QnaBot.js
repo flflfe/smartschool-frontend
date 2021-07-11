@@ -79,7 +79,7 @@ const useStyles = createUseStyles((theme) => ({
 		textRendering: "optimizeLegibility",
 	},
 	questionAnwers: {
-		height: "100%",
+		height: "90%",
 		overflow: "scroll",
 		overflowX: "hidden",
 		padding: "1em 1.25em",
@@ -104,14 +104,25 @@ const useStyles = createUseStyles((theme) => ({
 		fontSize: "30px",
 		fontWeight: "600",
 	},
+	shortanswer: {
+		marginTop: "10px",
+	},
+	answer: {
+		marginTop: "15px",
+	},
+	spantext: {
+		color: `${theme.color.colorBlue}`,
+		marginRight: "1em",
+	},
 }));
 const QnaBot = ({ chapterData, recordingId, chapterId }) => {
 	const theme = useTheme();
 	const classes = useStyles(theme);
-
+	const [btndisable, setBtnDisable] = useState(false);
 	const { isPublished } = chapterData;
 
 	const [resourcesArray, setResourcesArray] = useState([]);
+	const standbyArray = [];
 	const [sPublishedData, setsPublishedData] = useState([]);
 	const [question, setQuestion] = useState("");
 	const [questionAnswerArray, setQuestionAnswerArray] = useState([]);
@@ -121,16 +132,18 @@ const QnaBot = ({ chapterData, recordingId, chapterId }) => {
 	console.log(chapterData.resourceFiles);
 
 	async function createChatBot() {
-		chapterData.resourceFiles.map((resource) =>
-			setResourcesArray({ name: resource.name, fileUrl: resource.fileUrl })
-		);
+		setBtnDisable(true);
+		chapterData.resourceFiles.map((resource) => {
+			standbyArray.push({ name: resource.name, fileUrl: resource.fileUrl });
+			setResourcesArray(standbyArray);
+		});
 		try {
 			let response = await Axios({
 				method: "post",
 				url: `http://localhost:4000/chapters/${chapterId}/createChatBot`,
 				data: {
 					recordingsId: [recordingId],
-					resourcesArray: [resourcesArray],
+					resourcesArray: resourcesArray,
 				},
 				headers: {
 					"Content-Type": "application/json",
@@ -163,6 +176,7 @@ const QnaBot = ({ chapterData, recordingId, chapterId }) => {
 			questionAnswerArray.push({
 				question: question,
 				answer: data.answer.answers[0].answer,
+				shortanswer: data.answer.answers[0].answerSpan.text,
 			});
 			setQuestion("");
 
@@ -177,6 +191,7 @@ const QnaBot = ({ chapterData, recordingId, chapterId }) => {
 			<div className={classes.mainbox}>
 				{isPublished === false ? (
 					<input
+						disabled={btndisable}
 						type="button"
 						name="train"
 						className={classes.inputsubmit}
@@ -186,12 +201,30 @@ const QnaBot = ({ chapterData, recordingId, chapterId }) => {
 				) : (
 					<>
 						<div className={classes.questionAnwers}>
-							{questionAnswerArray.map((qa, index) => (
-								<div key={index} className={classes.questionAnwerBox}>
-									<div className={classes.question}>{qa.question}</div>
-									<div className={classes.answer}>{qa.answer}</div>
-								</div>
-							))}
+							{questionAnswerArray.map((qa, index) => {
+								console.log({ qa });
+								return (
+									<div
+										key={index}
+										className={classes.questionAnwerBox}>
+										<div className={classes.question}>
+											{qa.question}
+										</div>
+										<div className={classes.shortAnswer}>
+											<span className={classes.spantext}>
+												Answer:
+											</span>
+											{qa.shortanswer}
+										</div>
+										<div className={classes.answer}>
+											<span className={classes.spantext}>
+												Context:
+											</span>
+											{qa.answer}
+										</div>
+									</div>
+								);
+							})}
 						</div>
 
 						<div className={classes.sendQuestionbox}>

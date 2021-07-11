@@ -2,7 +2,8 @@ import React from "react";
 import { createUseStyles, useTheme } from "react-jss";
 const useStyles = createUseStyles((theme) => ({
 	container: {
-		height: "100%",
+		height: "15vh",
+		marginTop: "0.5em",
 		width: "100%",
 	},
 	mainbox: {
