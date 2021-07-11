@@ -9,7 +9,7 @@
     <img src="images/logo.png" alt="Logo" width="120" height="120">
   </a>
 
-  <h3 align="center">Smart School Backend</h3>
+  <h3 align="center">Smart School Frontend</h3>
 
   <p align="center">
     A natural language processing-powered cross-platform service for students of the future.
@@ -54,11 +54,9 @@ These repository is accompanied by the following repositories.
 # Backend
 
 <a href="https://github.com/codekavya/smartschool-backend">
-  <!-- Change the `github-readme-stats.anuraghazra1.vercel.app` to `github-readme-stats.vercel.app`  -->
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=codekavya&repo=smartschool-frontend&theme=material-palenight" />
 </a>    
 <a href="https://github.com/codekavya/smartschool-mobile">
-  <!-- Change the `github-readme-stats.anuraghazra1.vercel.app` to `github-readme-stats.vercel.app`  -->
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=codekavya&repo=smartschool-mobile&theme=material-palenight" />
 </a>
 
@@ -151,7 +149,7 @@ export default {
 };
 ```
 
-```
+
 <!-- CONTACT -->
 ## Contact
 
@@ -165,4 +163,4 @@ Codekavya - [@codekavya](https://twitter.com/codekavya) - contact@codekavya.com
 [stars-shield]: https://img.shields.io/github/stars/codekavya/smartschool-frontend?style=for-the-badge
 [stars-url]: https://github.com/codekavya/smartschool-frontend/stargazers
 
-```
+
