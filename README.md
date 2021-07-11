@@ -51,7 +51,7 @@ A natural language processing-powered cross-platform service for students of the
 
 These repository is accompanied by the following repositories.
 
-# Frontend
+# Backend
 
 <a href="https://github.com/codekavya/smartschool-backend">
   <!-- Change the `github-readme-stats.anuraghazra1.vercel.app` to `github-readme-stats.vercel.app`  -->
@@ -110,7 +110,7 @@ git clone https://github.com/codekavya/smartschool-backend.git
 **Change your current directory into the project.FRONTEND**
 
 ```bash
-cd smartschool
+cd smartschool-backend
 ```
 
 **Change your current directory into the project.BACKEND**
@@ -164,4 +164,5 @@ Codekavya - [@codekavya](https://twitter.com/codekavya) - contact@codekavya.com
 [forks-url]: https://github.com/codekavya/smartschool-frontend/network/members
 [stars-shield]: https://img.shields.io/github/stars/codekavya/smartschool-frontend?style=for-the-badge
 [stars-url]: https://github.com/codekavya/smartschool-frontend/stargazers
+
 ```
